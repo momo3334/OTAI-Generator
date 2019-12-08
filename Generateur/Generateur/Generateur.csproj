@@ -64,6 +64,11 @@
     <Compile Include="Map.Designer.cs">
       <DependentUpon>Map.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Scenario.cs" />
     <Compile Include="VueGenerateur.cs">
       <SubType>Form</SubType>
@@ -78,14 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="VueGenerateur.resx">
       <DependentUpon>VueGenerateur.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +104,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mapMercantor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Worldmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

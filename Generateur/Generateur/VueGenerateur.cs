@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,18 +11,42 @@ using System.Windows.Forms;
 
 namespace Generateur
 {
+    public interface IVueGenerateur
+    {
+
+    }
+
+
     public partial class VueGenerateur : Form
     {
         ControlleurGenerateur m_controller;
 
-        public VueGenerateur(ControlleurGenerateur p_controller)
+
+        public VueGenerateur(ControlleurGenerateur p_controller, Scenario p_scenario)
         {
             InitializeComponent();
             this.m_controller = p_controller;
 
+            p_scenario.addViewEventHandler(this.refreshAirportList, "onAirportChange");
+            p_scenario.addViewEventHandler(this.refreshAircraftList, "onAircraftChange");
+
             lstAirport.View = View.Details;
-            //lstAirport.Columns.Add("Nom");
-            //lstAirport.Columns.Add("Position");
+            lstAirport.Columns.Add("Nom", 380);
+            lstAirport.Columns.Add("Position", 165);
+            lstAirport.Columns.Add("PassagerMin", -2);
+            lstAirport.Columns.Add("PassagerMax", -2);
+            lstAirport.Columns.Add("MarchandiseMin", -2);
+            lstAirport.Columns.Add("MarchandiseMax", -2);
+
+            lstAircraft.View = View.Details;
+            lstAircraft.Columns.Add("Nom", 320);
+            lstAircraft.Columns.Add("Type", 130);
+            lstAircraft.Columns.Add("Capacité", -2);
+            lstAircraft.Columns.Add("Vitesse", -2);
+            lstAircraft.Columns.Add("Temps embarquement", -2);
+            lstAircraft.Columns.Add("Temps débarquement", -2);
+            lstAircraft.Columns.Add("Temps entretient", -2);
+
             addAircraftType();
         }
 
@@ -48,11 +73,9 @@ namespace Generateur
             maxMerchandise = Convert.ToInt32(this.txtAirportMaxMerch.Text);
 
             m_controller.addAirport(name, position, minPassenger, maxPassenger, minMerchandise, maxMerchandise);
-
-            updateAirportList();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAddAircraft_Click(object sender, EventArgs e)
         {
             String name;
             aircraftType selectedType = 0;
@@ -90,8 +113,6 @@ namespace Generateur
                     break;
             }
             m_controller.addAircraft( name, selectedType, speed, maintenanceTime, loadingTime, unloadingTime, capacity);
-
-            
         }
 
         private void addAircraftType()
@@ -103,7 +124,7 @@ namespace Generateur
             cmbAircraftType.Items.Add("Observation");
         }
 
-        private void updateAirportList()
+        public void refreshAirportList()
         {
             List<Aeroport> airports = this.m_controller.getAirports();
 
@@ -112,10 +133,86 @@ namespace Generateur
             foreach (Aeroport airport in airports)
             {
                 //this.lstAirport.Items.Add(airport.ToString());
-                lstAirport.Items.Add(new ListViewItem(new string[] { airport.Name, airport.Position }));
+                lstAirport.Items.Add(new ListViewItem(new string[] { airport.Name, airport.Position, airport.MinPassenger.ToString(), airport.MaxPassenger.ToString(), airport.MinMerchandise.ToString(), airport.MaxMerchandise.ToString() }));
+            }
+        }
+
+        public void refreshAircraftList()
+        {
+            List<Aeronef> aircrafts = this.m_controller.getAircraft();
+
+            this.lstAircraft.Items.Clear();
+
+            foreach (Aeronef aircraft in aircrafts)
+            {
+                //Reordering columns propely
+                List<string>temp = aircraft.ToString().Split(',').ToList();
+                temp.Insert(temp.Count,temp[2]);
+                temp.RemoveAt(2);
+                temp.Insert(1, temp[4]);
+                temp.RemoveAt(5);
+                temp.Insert(1, temp[5]);
+                temp.RemoveAt(6);
+                lstAircraft.Items.Add(new ListViewItem(temp.ToArray()));
+            }
+        }
+
+        public void fillAirportPositionTxtBox(double p_lattitude, double p_longitude)
+        {
+            String airportPosition = "";
+            char latCardinal = ' ';
+            char lonCardinal = ' ';
+
+            if (p_lattitude > 0)
+            {
+                latCardinal = 'N';
+            }
+            else
+            {
+                latCardinal = 'S';
             }
 
-            //this.lstAirport.Update();
+            if (p_longitude > 0)
+            {
+                lonCardinal = 'W';
+            }
+            else
+            {
+                lonCardinal = 'E';
+            }
+
+
+            int degLat = Convert.ToInt32(Math.Truncate(p_lattitude));
+            int degLon = Convert.ToInt32(Math.Truncate(p_longitude));
+
+            int minLat = Convert.ToInt32((p_lattitude - degLat) * 60);
+            int minLon = Convert.ToInt32((p_longitude - degLon) * 60);
+
+            int secLat = Convert.ToInt32((p_lattitude - degLat) * 100 - Math.Truncate(p_lattitude - degLat) * 60);
+            int secLon = Convert.ToInt32((p_longitude - degLon) * 100 - Math.Truncate(p_longitude - degLon) * 60);
+
+            char quote = '\u0022';
+            airportPosition = $"{degLat}° {minLat}\' {secLat}{quote} {latCardinal}, {degLon}° {minLon}\' {secLon}{quote} {lonCardinal}";
+            txtAirportPosition.Text = airportPosition;
+        }
+
+        private void cmbAircraftType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbAircraftType.SelectedValue)
+            {
+                case "Passager":
+                    break;
+                case "Cargo":
+                    break;
+                case "Secours":
+                    break;
+                case "Citerne":
+                    break;
+                case "Observation":
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

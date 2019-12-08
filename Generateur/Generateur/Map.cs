@@ -17,7 +17,7 @@ namespace Generateur
 
         public Map(VueGenerateur p_parent)
         {
-            this.m_parentForm = m_parentForm;
+            this.m_parentForm = p_parent;
             InitializeComponent();
         }
 
@@ -25,15 +25,20 @@ namespace Generateur
         {
             float height = this.Height;
             float width = this.Width;
+            Debug.WriteLine(e.Location.X);
+            Debug.WriteLine(e.Location.Y);
 
-            float mouseX = e.Location.X - width / 2;
-            float mouseY = (height - e.Location.Y) - (height / 2);
+            double mouseX = (e.Location.X - width / 2);
+            double mouseY = ((height - e.Location.Y) - height / 2);
 
 
-            float lat = mouseY ;
-            float longi = mouseX / 2;
+            double lat = mouseY / (height / 180);
+            double longi = mouseX / (width / 360);
 
             Debug.WriteLine("X:" + mouseX + "Y:" + mouseY + ", long: " + longi + " lat: " + lat);
+
+            m_parentForm.fillAirportPositionTxtBox(lat, longi);
+            this.Close();
         }
     }
 }

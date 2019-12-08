@@ -23,5 +23,10 @@ namespace Generateur
         {
             this.m_capacity = p_capacity;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()},{this.m_capacity},Passager";
+        }
     }
 }

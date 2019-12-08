@@ -31,5 +31,10 @@ namespace Generateur
             this.m_loadingTime = p_loadingTime;
             this.m_largingTime = p_largingTime;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()},{this.m_loadingTime},{this.m_largingTime},Citerne";
+        }
     }
 }

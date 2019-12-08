@@ -46,5 +46,10 @@ namespace Generateur
             this.m_speed = p_speed;
             this.m_maintenanceTime = p_maintenanceTime;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Name},{this.Speed},{this.m_maintenanceTime}";
+        }
     }
 }

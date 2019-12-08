@@ -8,6 +8,8 @@ namespace Generateur
 {
     public enum aircraftType { aeronefPassager, aeronefCargo, aeronefSecours, aeronefCiterne, aeronefObservateur }
 
+
+
     static class Generateur
     {
         /// <summary>

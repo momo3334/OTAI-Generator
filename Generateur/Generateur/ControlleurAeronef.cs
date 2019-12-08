@@ -22,5 +22,10 @@ namespace Generateur
         {
             m_scenario.addAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity);
         }
+
+        public List<Aeronef> getAircraft()
+        {
+            return m_scenario.Aircrafts;
+        }
     }
 }

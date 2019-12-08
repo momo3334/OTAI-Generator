@@ -23,5 +23,10 @@ namespace Generateur
         {
             this.m_weightCapacity = p_weightCapacity;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()},{this.m_weightCapacity},Cargo";
+        }
     }
 }

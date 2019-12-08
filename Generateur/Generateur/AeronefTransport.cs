@@ -32,5 +32,10 @@ namespace Generateur
             this.m_loadingTime = p_loadingTime;
             this.m_unloadingTime = p_unloadingTime;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()},{this.m_loadingTime},{this.m_unloadingTime}";
+        }
     }
 }

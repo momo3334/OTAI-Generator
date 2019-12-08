@@ -44,7 +44,7 @@
             this.btnAddAirport = new System.Windows.Forms.Button();
             this.btnMap = new System.Windows.Forms.Button();
             this.lstAircraft = new System.Windows.Forms.ListView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddAircraft = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAircraftMaintenance = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -66,15 +66,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.txtAircraftCapacity = new System.Windows.Forms.TextBox();
-            this.Nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lstAirport
             // 
-            this.lstAirport.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Nom,
-            this.Position});
             this.lstAirport.HideSelection = false;
             this.lstAirport.Location = new System.Drawing.Point(8, 8);
             this.lstAirport.Margin = new System.Windows.Forms.Padding(2);
@@ -117,7 +112,7 @@
             this.txtAirportPosition.Margin = new System.Windows.Forms.Padding(2);
             this.txtAirportPosition.Name = "txtAirportPosition";
             this.txtAirportPosition.Size = new System.Drawing.Size(68, 20);
-            this.txtAirportPosition.TabIndex = 3;
+            this.txtAirportPosition.TabIndex = 2;
             // 
             // label3
             // 
@@ -135,7 +130,7 @@
             this.txtAirportMinPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtAirportMinPass.Name = "txtAirportMinPass";
             this.txtAirportMinPass.Size = new System.Drawing.Size(35, 20);
-            this.txtAirportMinPass.TabIndex = 5;
+            this.txtAirportMinPass.TabIndex = 3;
             // 
             // label4
             // 
@@ -153,7 +148,7 @@
             this.txtAirportMaxPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtAirportMaxPass.Name = "txtAirportMaxPass";
             this.txtAirportMaxPass.Size = new System.Drawing.Size(35, 20);
-            this.txtAirportMaxPass.TabIndex = 7;
+            this.txtAirportMaxPass.TabIndex = 4;
             // 
             // label5
             // 
@@ -171,7 +166,7 @@
             this.txtAirportMinMerch.Margin = new System.Windows.Forms.Padding(2);
             this.txtAirportMinMerch.Name = "txtAirportMinMerch";
             this.txtAirportMinMerch.Size = new System.Drawing.Size(35, 20);
-            this.txtAirportMinMerch.TabIndex = 9;
+            this.txtAirportMinMerch.TabIndex = 5;
             // 
             // label6
             // 
@@ -189,7 +184,7 @@
             this.txtAirportMaxMerch.Margin = new System.Windows.Forms.Padding(2);
             this.txtAirportMaxMerch.Name = "txtAirportMaxMerch";
             this.txtAirportMaxMerch.Size = new System.Drawing.Size(35, 20);
-            this.txtAirportMaxMerch.TabIndex = 11;
+            this.txtAirportMaxMerch.TabIndex = 6;
             // 
             // btnAddAirport
             // 
@@ -197,7 +192,7 @@
             this.btnAddAirport.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddAirport.Name = "btnAddAirport";
             this.btnAddAirport.Size = new System.Drawing.Size(880, 26);
-            this.btnAddAirport.TabIndex = 13;
+            this.btnAddAirport.TabIndex = 7;
             this.btnAddAirport.Text = "Ajouter";
             this.btnAddAirport.UseVisualStyleBackColor = true;
             this.btnAddAirport.Click += new System.EventHandler(this.BtnAddAirport_Click);
@@ -223,16 +218,16 @@
             this.lstAircraft.TabIndex = 15;
             this.lstAircraft.UseCompatibleStateImageBehavior = false;
             // 
-            // button2
+            // btnAddAircraft
             // 
-            this.button2.Location = new System.Drawing.Point(8, 312);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(882, 26);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Ajouter";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAddAircraft.Location = new System.Drawing.Point(8, 312);
+            this.btnAddAircraft.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddAircraft.Name = "btnAddAircraft";
+            this.btnAddAircraft.Size = new System.Drawing.Size(882, 26);
+            this.btnAddAircraft.TabIndex = 15;
+            this.btnAddAircraft.Text = "Ajouter";
+            this.btnAddAircraft.UseVisualStyleBackColor = true;
+            this.btnAddAircraft.Click += new System.EventHandler(this.btnAddAircraft_Click);
             // 
             // label7
             // 
@@ -250,7 +245,7 @@
             this.txtAircraftMaintenance.Margin = new System.Windows.Forms.Padding(2);
             this.txtAircraftMaintenance.Name = "txtAircraftMaintenance";
             this.txtAircraftMaintenance.Size = new System.Drawing.Size(45, 20);
-            this.txtAircraftMaintenance.TabIndex = 26;
+            this.txtAircraftMaintenance.TabIndex = 14;
             // 
             // label8
             // 
@@ -268,7 +263,7 @@
             this.txtAircraftUnloading.Margin = new System.Windows.Forms.Padding(2);
             this.txtAircraftUnloading.Name = "txtAircraftUnloading";
             this.txtAircraftUnloading.Size = new System.Drawing.Size(45, 20);
-            this.txtAircraftUnloading.TabIndex = 24;
+            this.txtAircraftUnloading.TabIndex = 13;
             // 
             // label9
             // 
@@ -286,7 +281,7 @@
             this.txtAircraftLoading.Margin = new System.Windows.Forms.Padding(2);
             this.txtAircraftLoading.Name = "txtAircraftLoading";
             this.txtAircraftLoading.Size = new System.Drawing.Size(45, 20);
-            this.txtAircraftLoading.TabIndex = 22;
+            this.txtAircraftLoading.TabIndex = 12;
             // 
             // label10
             // 
@@ -304,7 +299,7 @@
             this.txtAircraftSpeed.Margin = new System.Windows.Forms.Padding(2);
             this.txtAircraftSpeed.Name = "txtAircraftSpeed";
             this.txtAircraftSpeed.Size = new System.Drawing.Size(45, 20);
-            this.txtAircraftSpeed.TabIndex = 20;
+            this.txtAircraftSpeed.TabIndex = 11;
             // 
             // label11
             // 
@@ -332,7 +327,7 @@
             this.txtAircraftName.Margin = new System.Windows.Forms.Padding(2);
             this.txtAircraftName.Name = "txtAircraftName";
             this.txtAircraftName.Size = new System.Drawing.Size(68, 20);
-            this.txtAircraftName.TabIndex = 16;
+            this.txtAircraftName.TabIndex = 8;
             // 
             // cmbAircraftType
             // 
@@ -341,7 +336,8 @@
             this.cmbAircraftType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAircraftType.Name = "cmbAircraftType";
             this.cmbAircraftType.Size = new System.Drawing.Size(121, 21);
-            this.cmbAircraftType.TabIndex = 29;
+            this.cmbAircraftType.TabIndex = 9;
+            this.cmbAircraftType.SelectedIndexChanged += new System.EventHandler(this.cmbAircraftType_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -360,7 +356,7 @@
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 32;
+            this.comboBox2.TabIndex = 16;
             // 
             // comboBox3
             // 
@@ -369,7 +365,7 @@
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 34;
+            this.comboBox3.TabIndex = 17;
             // 
             // label14
             // 
@@ -388,7 +384,7 @@
             this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 36;
+            this.comboBox4.TabIndex = 18;
             // 
             // label15
             // 
@@ -406,7 +402,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(881, 53);
-            this.button1.TabIndex = 37;
+            this.button1.TabIndex = 19;
             this.button1.Text = "Générer le scénario";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -426,17 +422,9 @@
             this.txtAircraftCapacity.Margin = new System.Windows.Forms.Padding(2);
             this.txtAircraftCapacity.Name = "txtAircraftCapacity";
             this.txtAircraftCapacity.Size = new System.Drawing.Size(45, 20);
-            this.txtAircraftCapacity.TabIndex = 38;
+            this.txtAircraftCapacity.TabIndex = 10;
             // 
-            // Nom
-            // 
-            this.Nom.Text = "Nom";
-            // 
-            // Position
-            // 
-            this.Position.Text = "Position";
-            // 
-            // Form1
+            // VueGenerateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -452,7 +440,7 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.cmbAircraftType);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAddAircraft);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtAircraftMaintenance);
             this.Controls.Add(this.label8);
@@ -481,7 +469,7 @@
             this.Controls.Add(this.txtAirportName);
             this.Controls.Add(this.lstAirport);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
+            this.Name = "VueGenerateur";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -506,7 +494,7 @@
         private System.Windows.Forms.Button btnAddAirport;
         private System.Windows.Forms.Button btnMap;
         private System.Windows.Forms.ListView lstAircraft;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddAircraft;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAircraftMaintenance;
         private System.Windows.Forms.Label label8;
@@ -528,8 +516,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtAircraftCapacity;
-        private System.Windows.Forms.ColumnHeader Nom;
-        private System.Windows.Forms.ColumnHeader Position;
     }
 }
 

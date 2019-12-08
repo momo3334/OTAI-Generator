@@ -19,3 +19,14 @@ C:\Users\MARCX\Desktop\generateur_Scenario\TP2\Generateur\Generateur\obj\Debug\G
 C:\Users\MARCX\Desktop\generateur_Scenario\TP2\Generateur\Generateur\obj\Debug\Generateur.csprojAssemblyReference.cache
 P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\Generateur\Generateur\obj\Debug\Generateur.Map.resources
 P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\Generateur\Generateur\obj\Debug\Generateur.VueGenerateur.resources
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\bin\Debug\Generateur.exe.config
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\bin\Debug\Generateur.exe
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\bin\Debug\Generateur.pdb
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.csprojAssemblyReference.cache
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.Map.resources
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.Properties.Resources.resources
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.VueGenerateur.resources
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.csproj.GenerateResource.cache
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.csproj.CoreCompileInputs.cache
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.exe
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\Generateur\Generateur\obj\Debug\Generateur.pdb

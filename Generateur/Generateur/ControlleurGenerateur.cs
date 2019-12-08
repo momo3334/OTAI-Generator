@@ -28,6 +28,11 @@ namespace Generateur
             return m_controlleurAeroport.getAirports();
         }
 
+        public List<Aeronef> getAircraft()
+        {
+            return m_controlleurAeronef.getAircraft();
+        }
+
         public void addAirport(String p_name, String p_position, int p_minPassenger, int p_maxPassenger, int p_minMerchandise, int p_maxMerchandise)
         {
             m_controlleurAeroport.addAirport(p_name, p_position, p_minPassenger, p_maxPassenger, p_minMerchandise, p_maxMerchandise);
