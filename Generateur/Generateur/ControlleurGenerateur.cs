@@ -18,9 +18,9 @@ namespace Generateur
             this.m_controlleurAeroport = new ControlleurAeroport(p_scenario);
         }
 
-        public void addAircraft(String p_name, aircraftType p_type, int p_speed, int p_maintenanceTime, int p_loadingTime, int p_unloadingTime, float p_capacity)
+        public void addAircraft(String p_name, aircraftType p_type, int p_speed, int p_maintenanceTime, int p_loadingTime, int p_unloadingTime, float p_capacity, int indexOfAirport)
         {
-            this.m_controlleurAeronef.addAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity);
+            this.m_controlleurAeronef.addAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity, indexOfAirport);
         }
 
         public List<Aeroport> getAirports()
@@ -28,9 +28,9 @@ namespace Generateur
             return m_controlleurAeroport.getAirports();
         }
 
-        public List<Aeronef> getAircraft()
+        public List<String> getAircraft(int indexOfAirport)
         {
-            return m_controlleurAeronef.getAircraft();
+            return m_controlleurAeronef.getAircraft(indexOfAirport);
         }
 
         public void addAirport(String p_name, String p_position, int p_minPassenger, int p_maxPassenger, int p_minMerchandise, int p_maxMerchandise)

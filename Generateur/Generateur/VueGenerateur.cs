@@ -20,17 +20,19 @@ namespace Generateur
     public partial class VueGenerateur : Form
     {
         ControlleurGenerateur m_controller;
+        Scenario m_scenario;
+
 
 
         public VueGenerateur(ControlleurGenerateur p_controller, Scenario p_scenario)
         {
             InitializeComponent();
             this.m_controller = p_controller;
-
-            p_scenario.addViewEventHandler(this.refreshAirportList, "onAirportChange");
-            p_scenario.addViewEventHandler(this.refreshAircraftList, "onAircraftChange");
+            this.m_scenario = p_scenario;
+            m_scenario.addViewEventHandler(this.refreshAirportList, "onAirportChange");
 
             lstAirport.View = View.Details;
+            lstAirport.FullRowSelect = true;
             lstAirport.Columns.Add("Nom", 380);
             lstAirport.Columns.Add("Position", 165);
             lstAirport.Columns.Add("PassagerMin", -2);
@@ -39,6 +41,7 @@ namespace Generateur
             lstAirport.Columns.Add("MarchandiseMax", -2);
 
             lstAircraft.View = View.Details;
+            lstAircraft.FullRowSelect = true;
             lstAircraft.Columns.Add("Nom", 320);
             lstAircraft.Columns.Add("Type", 130);
             lstAircraft.Columns.Add("Capacité", -2);
@@ -48,6 +51,7 @@ namespace Generateur
             lstAircraft.Columns.Add("Temps entretient", -2);
 
             addAircraftType();
+            addAvailableImages();
         }
 
         private void btnMap_Click(object sender, EventArgs e)
@@ -72,47 +76,54 @@ namespace Generateur
             minMerchandise = Convert.ToInt32(this.txtAirportMinMerch.Text);
             maxMerchandise = Convert.ToInt32(this.txtAirportMaxMerch.Text);
 
+            
             m_controller.addAirport(name, position, minPassenger, maxPassenger, minMerchandise, maxMerchandise);
+            
         }
 
         private void btnAddAircraft_Click(object sender, EventArgs e)
         {
-            String name;
-            aircraftType selectedType = 0;
-            int speed;
-            int maintenanceTime;
-            int loadingTime;
-            int unloadingTime;
-            int capacity;
-
-
-            name = txtAircraftName.Text;
-            speed = Convert.ToInt32(txtAircraftSpeed.Text);
-            maintenanceTime = Convert.ToInt32(txtAircraftMaintenance.Text);
-            loadingTime = Convert.ToInt32(txtAircraftLoading.Text);
-            unloadingTime = Convert.ToInt32(txtAircraftUnloading.Text);
-            capacity = Convert.ToInt32(txtAircraftCapacity.Text);
-            switch (cmbAircraftType.SelectedItem)
+            if (this.lstAirport.SelectedIndices.Count > 0)
             {
-                case "Passager":
-                    selectedType = aircraftType.aeronefPassager;
-                    break;
-                case "Cargo":
-                    selectedType = aircraftType.aeronefCargo;
-                    break;
-                case "Secours":
-                    selectedType = aircraftType.aeronefSecours;
-                    break;
-                case "Citerne":
-                    selectedType = aircraftType.aeronefCiterne;
-                    break;
-                case "Observation":
-                    selectedType = aircraftType.aeronefObservateur;
-                    break;
-                default:
-                    break;
+                int selectedAirport = this.lstAirport.SelectedIndices[0];
+
+                String name;
+                aircraftType selectedType = 0;
+                int speed;
+                int maintenanceTime;
+                int loadingTime;
+                int unloadingTime;
+                int capacity;
+
+
+                name = txtAircraftName.Text;
+                speed = Convert.ToInt32(txtAircraftSpeed.Text);
+                maintenanceTime = Convert.ToInt32(txtAircraftMaintenance.Text);
+                loadingTime = Convert.ToInt32(txtAircraftLoading.Text);
+                unloadingTime = Convert.ToInt32(txtAircraftUnloading.Text);
+                capacity = Convert.ToInt32(txtAircraftCapacity.Text);
+                switch (cmbAircraftType.SelectedItem)
+                {
+                    case "Passager":
+                        selectedType = aircraftType.aeronefPassager;
+                        break;
+                    case "Cargo":
+                        selectedType = aircraftType.aeronefCargo;
+                        break;
+                    case "Secours":
+                        selectedType = aircraftType.aeronefSecours;
+                        break;
+                    case "Citerne":
+                        selectedType = aircraftType.aeronefCiterne;
+                        break;
+                    case "Observation":
+                        selectedType = aircraftType.aeronefObservateur;
+                        break;
+                    default:
+                        break;
+                }
+                m_controller.addAircraft(name, selectedType, speed, maintenanceTime, loadingTime, unloadingTime, capacity, selectedAirport);
             }
-            m_controller.addAircraft( name, selectedType, speed, maintenanceTime, loadingTime, unloadingTime, capacity);
         }
 
         private void addAircraftType()
@@ -122,6 +133,39 @@ namespace Generateur
             cmbAircraftType.Items.Add("Secours");
             cmbAircraftType.Items.Add("Citerne");
             cmbAircraftType.Items.Add("Observation");
+        }
+
+
+        private void addAvailableImages()
+        {
+            String[] airports = System.IO.Directory.GetFiles(@"..\..\data\icons\airports", "*.png");
+
+            //All world map airports
+            foreach (String filePath in airports)
+            {
+                String[] fileName = filePath.Split('\\');
+                cmbImageAirport.Items.Add(fileName[fileName.Length - 1]);
+            }
+
+            //All world map airplanes
+            String[] airplanes = System.IO.Directory.GetFiles(@"..\..\data\icons\airplanes", "*.png");
+
+            foreach (String filePath in airplanes)
+            {
+                String[] fileName = filePath.Split('\\');
+
+                cmbImageAirplane.Items.Add(fileName[fileName.Length - 1]);
+            }
+
+            //All world map images
+            String[] maps = System.IO.Directory.GetFiles(@"..\..\data\icons\maps", "*.png");
+
+            foreach (String filePath in maps)
+            {
+                String[] fileName = filePath.Split('\\');
+
+                cmbImageMap.Items.Add(fileName[fileName.Length - 1]);
+            }
         }
 
         public void refreshAirportList()
@@ -139,21 +183,25 @@ namespace Generateur
 
         public void refreshAircraftList()
         {
-            List<Aeronef> aircrafts = this.m_controller.getAircraft();
-
-            this.lstAircraft.Items.Clear();
-
-            foreach (Aeronef aircraft in aircrafts)
+            if (lstAirport.SelectedIndices.Count > 0)
             {
-                //Reordering columns propely
-                List<string>temp = aircraft.ToString().Split(',').ToList();
-                temp.Insert(temp.Count,temp[2]);
-                temp.RemoveAt(2);
-                temp.Insert(1, temp[4]);
-                temp.RemoveAt(5);
-                temp.Insert(1, temp[5]);
-                temp.RemoveAt(6);
-                lstAircraft.Items.Add(new ListViewItem(temp.ToArray()));
+                List<String> aircrafts = this.m_scenario.getAircrafts(lstAirport.SelectedIndices[0]);
+
+                this.lstAircraft.Items.Clear();
+
+                for (int i = 0; i < aircrafts.Count; i++)
+                {
+                    //Reordering columns propely
+                    List<String> temp = aircrafts[i].Split(',').ToList();
+
+                    temp.Insert(temp.Count, temp[2]);
+                    temp.RemoveAt(2);
+                    temp.Insert(1, temp[4]);
+                    temp.RemoveAt(5);
+                    temp.Insert(1, temp[5]);
+                    temp.RemoveAt(6);
+                    lstAircraft.Items.Add(new ListViewItem(temp.ToArray()));
+                }
             }
         }
 
@@ -213,6 +261,46 @@ namespace Generateur
                 default:
                     break;
             }
+        }
+
+        private void btnGenerateScenario_Click(object sender, EventArgs e)
+        {
+            m_scenario.serializeScenario();
+        }
+
+        private void lstAirport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refreshAircraftList();
+        }
+
+        public String getImageAirplane()
+        {
+            return this.cmbImageAirplane.SelectedItem.ToString();
+        }
+
+        public String getImageAirport()
+        {
+            return this.cmbImageAirport.SelectedItem.ToString();
+        }
+
+        public String getImageMap()
+        {
+            return this.cmbImageMap.SelectedItem.ToString();
+        }
+
+        private void cmbImageMap_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbImageAirport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbImageAirplane_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

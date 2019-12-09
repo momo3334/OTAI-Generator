@@ -18,14 +18,14 @@ namespace Generateur
             }
         }
 
-        public void addAircraft(String p_name, aircraftType p_type, int p_speed, int p_maintenanceTime, int p_loadingTime, int p_unloadingTime, float p_capacity)
+        public void addAircraft(String p_name, aircraftType p_type, int p_speed, int p_maintenanceTime, int p_loadingTime, int p_unloadingTime, float p_capacity, int indexOfAirport)
         {
-            m_scenario.addAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity);
+            m_scenario.addAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity, indexOfAirport);
         }
 
-        public List<Aeronef> getAircraft()
+        public List<String> getAircraft(int indexOfAirport)
         {
-            return m_scenario.Aircrafts;
+            return m_scenario.getAircrafts(indexOfAirport);
         }
     }
 }

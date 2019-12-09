@@ -1,40 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Generateur
 {
     public delegate void onAirportChange();
-    public delegate void onAircraftChange();
 
+    [DataContractAttribute()]
+    [KnownType(typeof(List<Aeroport>))]
+    [KnownType(typeof(Scenario))]
     public class Scenario
     {
         //Données membres
-        List<Aeronef> m_aircrafts;
+        byte[] m_mapImage;
+        byte[] m_airportIcon;
+        byte[] m_aircraftIcon;
         List<Aeroport> m_airports;
         FabriqueAvion m_aircraftFactory;
-
         ControlleurGenerateur m_generatorController;
         VueGenerateur m_vueGenerateur;
 
         //Evenement
         onAirportChange m_onAirportChange;
-        onAircraftChange m_onAircraftChange;
 
 
         //Accesseurs
-        public List<Aeronef> Aircrafts
-        {
-            get { return this.m_aircrafts; }
-            set { this.m_aircrafts = value; }
-        }
+        [DataMember()]
         public List<Aeroport> Airports
         {
             get { return this.m_airports; }
             set { this.m_airports = value; }
+        }
+
+        [DataMember()]
+        public byte[] MapImage
+        {
+            get => m_mapImage;
+            set => m_mapImage = value;
+        }
+
+        [DataMember()]
+        public byte[] AirportIcon
+        {
+            get => m_airportIcon;
+            set => m_airportIcon = value;
+        }
+
+        [DataMember()]
+        public byte[] AircraftIcon
+        {
+            get => m_aircraftIcon;
+            set => m_aircraftIcon = value;
         }
 
         //Constructeurs
@@ -42,9 +67,8 @@ namespace Generateur
         {
             this.m_generatorController = new ControlleurGenerateur(this);
             this.m_aircraftFactory = FabriqueAvion.getInstance();
-            this.m_aircrafts = new List<Aeronef>();
             this.m_airports = new List<Aeroport>();
-            
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -62,7 +86,7 @@ namespace Generateur
                     m_onAirportChange += new onAirportChange(p_viewMethod);
                     break;
                 case "onAircraftChange":
-                    m_onAircraftChange += new onAircraftChange(p_viewMethod);
+                    m_airports[0].addViewEventHandler(p_viewMethod);
                     break;
                 default:
                     break;
@@ -77,7 +101,7 @@ namespace Generateur
                     m_onAirportChange -= new onAirportChange(p_viewMethod);
                     break;
                 case "onAircraftChange":
-                    m_onAircraftChange -= new onAircraftChange(p_viewMethod);
+                    m_airports[0].removeViewEventHandler(p_viewMethod);
                     break;
                 default:
                     break;
@@ -87,41 +111,23 @@ namespace Generateur
         //Notifier la vue selon le changement apporté
         public void notifyView(string p_type)
         {
-            switch (p_type)
-            {
-                case "airportChange":
-                    if (this.m_onAirportChange != null)
-                    {
-                        m_onAirportChange.Invoke();
-                    }
-                    break;
-                case "aircraftChange":
-                    if (this.m_onAircraftChange != null)
-                    {
-                        m_onAircraftChange.Invoke();
-                    }
-                    break;
-                default:
-                    break;
-            }
+            m_onAirportChange.Invoke();
         }
 
 
-        public void addAircraft(String p_name, aircraftType p_type, int p_speed, int p_maintenanceTime, int p_loadingTime, int p_unloadingTime, float p_capacity)
+        public void addAircraft(String p_name, aircraftType p_type, int p_speed, int p_maintenanceTime, int p_loadingTime, int p_unloadingTime, float p_capacity, int indexOfAirport)
         {
             if (m_aircraftFactory != null)
             {
                 Aeronef airCraft = m_aircraftFactory.createAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity);
-                m_aircrafts.Add(airCraft);
+                m_airports[indexOfAirport].addAircraft(airCraft);
             }
             else
             {
                 this.m_aircraftFactory = FabriqueAvion.getInstance();
                 Aeronef airCraft = m_aircraftFactory.createAircraft(p_name, p_type, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime, p_capacity);
-                m_aircrafts.Add(airCraft);
+                m_airports[indexOfAirport].addAircraft(airCraft);
             }
-            //Notifier les abonnés
-            this.notifyView("aircraftChange");
         }
 
         public void addAirport(String p_name, String p_position, int p_minPassenger, int p_maxPassenger, int p_minMerchandise, int p_maxMerchandise)
@@ -130,20 +136,18 @@ namespace Generateur
 
             if (this.m_airports.Count > 0)
             {
+                bool exist = false;
                 foreach (var airport in this.m_airports)
                 {
-                    bool exist = false;
-                    
                     //Si l'aeroport est déja présent dans la liste
-                    if (airport.ToString() != airportToAdd.ToString())
+                    if (airport.ToString() == airportToAdd.ToString())
                     {
                         exist = true;
                     }
-
-                    if (exist)
-                    {
-                        this.m_airports.Add(airportToAdd);
-                    }
+                }
+                if (!exist)
+                {
+                    this.m_airports.Add(airportToAdd);
                 }
             }
             else
@@ -151,8 +155,96 @@ namespace Generateur
                 this.m_airports.Add(airportToAdd);
             }
 
+            airportToAdd.addViewEventHandler(this.m_vueGenerateur.refreshAircraftList);
+
             //Notifier les abonnés
             this.notifyView("airportChange");
+        }
+
+        public List<String> getAircrafts(int indexOfAirport)
+        {
+            return this.m_airports[indexOfAirport].getAircrafts();
+        }
+
+        public void serializeScenario()
+        {
+            Debug.WriteLine("generation scenario initialise...");
+
+            this.m_aircraftIcon = convertImageTobyteArray(getSelectedPath("cmbImageAirplane"));
+            this.m_airportIcon = convertImageTobyteArray(getSelectedPath("cmbImageAirport"));
+            this.m_mapImage = convertImageTobyteArray(getSelectedPath("cmbImageMap"));
+
+
+            DataContractSerializer serializer = new DataContractSerializer(typeof(List<Aeroport>));
+
+            //Permet de specifier que q'une indentation est désiré sur le fichier xml de sortie.
+            XmlWriterSettings settings = new XmlWriterSettings { Indent = true };
+
+            string text;
+            using (var ms = new MemoryStream())
+            {
+                using (var xmlWriter = XmlWriter.Create(ms, new XmlWriterSettings { Indent = true }))
+                {
+                    serializer.WriteObject(xmlWriter, this);
+                }
+                ms.Seek(0, SeekOrigin.Begin);
+                using (StreamReader reader = new StreamReader(ms))
+                {
+                    text = reader.ReadToEnd();
+                }
+
+                File.WriteAllText(@"..\..\data\Scenario.xml", text);
+            }
+            this.m_airports = null;
+            deserializeScenario();
+        }
+
+        public void deserializeScenario()
+        {
+            Debug.WriteLine("Deserialisation scenario initialise...");
+            string text;
+
+            text = File.ReadAllText(@"..\..\data\Scenario.xml");
+            using (Stream stream = new MemoryStream())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(text);
+                stream.Write(bytes, 0, bytes.Length);
+                stream.Position = 0;
+                DataContractSerializer serializer = new DataContractSerializer(typeof(List<Aeroport>));
+                this.m_airports = (List<Aeroport>)serializer.ReadObject(stream);
+            }
+            Debug.WriteLine(this.m_airports.ToString());
+        }
+
+        public byte[] convertImageTobyteArray(String path)
+        {
+            Image image = Image.FromFile(path);
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, ImageFormat.Bmp);
+                return ms.ToArray();
+            }
+        }
+
+        public String getSelectedPath(String cmbTarget)
+        {
+            String imagePath = "";
+            switch (cmbTarget)
+            {
+                case "cmbImageAirplane":
+                    imagePath = $"..\\..\\data\\icons\\airplanes\\{m_vueGenerateur.getImageAirplane()}";
+                    break;
+                case "cmbImageAirport":
+                    imagePath = $"..\\..\\data\\icons\\airports\\{m_vueGenerateur.getImageAirport()}";
+                    break;
+                case "cmbImageMap":
+                    imagePath = $"..\\..\\data\\icons\\maps\\{ m_vueGenerateur.getImageMap()}";
+                    break;
+                default:
+                    break;
+            }
+
+            return imagePath;
         }
     }
 }

@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Runtime.Serialization;
 namespace Generateur
 {
+    [DataContractAttribute()]
+    [KnownType(typeof(AeronefPassager))]
+    [KnownType(typeof(AeronefCargo))]
+    [KnownType(typeof(AeronefCiterne))]
+    [KnownType(typeof(AeronefObservateur))]
+    [KnownType(typeof(AeronefPassager))]
+    [KnownType(typeof(AeronefSecours))]
+    [KnownType(typeof(AeronefTransport))]
     public abstract class Aeronef
     {
         //Données membres
@@ -16,23 +24,29 @@ namespace Generateur
         public enum aircraftType { aeronefPassager, aeronefCargo, aeronefSecours, aeronefCiterne, aeronefObservateur }
 
         //Accesseurs
+
+        [DataMember()]
         public String Name
         {
             get { return this.m_name; }
             set { this.m_name = value; }
         }
+
+        [DataMember()]
         public String Destination
         {
             get { return this.m_destination; }
             set { this.m_destination = value; }
         }
 
+        [DataMember()]
         public int Speed
         {
             get { return this.m_speed; }
             set { this.m_speed = value; }
         }
 
+        [DataMember()]
         public int Maintenance
         {
             get { return this.m_maintenanceTime; }
@@ -40,6 +54,9 @@ namespace Generateur
         }
 
         //Constructeurs
+
+        public Aeronef(){ }
+
         public Aeronef(String p_name, int p_speed, int p_maintenanceTime)
         {
             this.m_name = p_name;

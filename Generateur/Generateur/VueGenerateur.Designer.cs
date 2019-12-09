@@ -58,12 +58,12 @@
             this.txtAircraftName = new System.Windows.Forms.TextBox();
             this.cmbAircraftType = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbImageMap = new System.Windows.Forms.ComboBox();
+            this.cmbImageAirport = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cmbImageAirplane = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGenerateScenario = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.txtAircraftCapacity = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -77,6 +77,7 @@
             this.lstAirport.Size = new System.Drawing.Size(881, 110);
             this.lstAirport.TabIndex = 0;
             this.lstAirport.UseCompatibleStateImageBehavior = false;
+            this.lstAirport.SelectedIndexChanged += new System.EventHandler(this.lstAirport_SelectedIndexChanged);
             // 
             // txtAirportName
             // 
@@ -349,23 +350,25 @@
             this.label13.TabIndex = 31;
             this.label13.Text = "Image Carte :";
             // 
-            // comboBox2
+            // cmbImageMap
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(105, 369);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 16;
+            this.cmbImageMap.FormattingEnabled = true;
+            this.cmbImageMap.Location = new System.Drawing.Point(105, 369);
+            this.cmbImageMap.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbImageMap.Name = "cmbImageMap";
+            this.cmbImageMap.Size = new System.Drawing.Size(121, 21);
+            this.cmbImageMap.TabIndex = 16;
+            this.cmbImageMap.SelectedIndexChanged += new System.EventHandler(this.cmbImageMap_SelectedIndexChanged);
             // 
-            // comboBox3
+            // cmbImageAirport
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(429, 369);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 17;
+            this.cmbImageAirport.FormattingEnabled = true;
+            this.cmbImageAirport.Location = new System.Drawing.Point(429, 369);
+            this.cmbImageAirport.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbImageAirport.Name = "cmbImageAirport";
+            this.cmbImageAirport.Size = new System.Drawing.Size(121, 21);
+            this.cmbImageAirport.TabIndex = 17;
+            this.cmbImageAirport.SelectedIndexChanged += new System.EventHandler(this.cmbImageAirport_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -377,14 +380,15 @@
             this.label14.TabIndex = 33;
             this.label14.Text = "Image Aéroport :";
             // 
-            // comboBox4
+            // cmbImageAirplane
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(752, 369);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 18;
+            this.cmbImageAirplane.FormattingEnabled = true;
+            this.cmbImageAirplane.Location = new System.Drawing.Point(752, 369);
+            this.cmbImageAirplane.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbImageAirplane.Name = "cmbImageAirplane";
+            this.cmbImageAirplane.Size = new System.Drawing.Size(121, 21);
+            this.cmbImageAirplane.TabIndex = 18;
+            this.cmbImageAirplane.SelectedIndexChanged += new System.EventHandler(this.cmbImageAirplane_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -396,15 +400,16 @@
             this.label15.TabIndex = 35;
             this.label15.Text = "Image Avion :";
             // 
-            // button1
+            // btnGenerateScenario
             // 
-            this.button1.Location = new System.Drawing.Point(8, 402);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(881, 53);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Générer le scénario";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGenerateScenario.Location = new System.Drawing.Point(8, 402);
+            this.btnGenerateScenario.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerateScenario.Name = "btnGenerateScenario";
+            this.btnGenerateScenario.Size = new System.Drawing.Size(881, 53);
+            this.btnGenerateScenario.TabIndex = 19;
+            this.btnGenerateScenario.Text = "Générer le scénario";
+            this.btnGenerateScenario.UseVisualStyleBackColor = true;
+            this.btnGenerateScenario.Click += new System.EventHandler(this.btnGenerateScenario_Click);
             // 
             // label16
             // 
@@ -432,12 +437,12 @@
             this.ClientSize = new System.Drawing.Size(896, 463);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtAircraftCapacity);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.btnGenerateScenario);
+            this.Controls.Add(this.cmbImageAirplane);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cmbImageAirport);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbImageMap);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.cmbAircraftType);
             this.Controls.Add(this.btnAddAircraft);
@@ -508,12 +513,12 @@
         private System.Windows.Forms.TextBox txtAircraftName;
         private System.Windows.Forms.ComboBox cmbAircraftType;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbImageMap;
+        private System.Windows.Forms.ComboBox cmbImageAirport;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cmbImageAirplane;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGenerateScenario;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtAircraftCapacity;
     }

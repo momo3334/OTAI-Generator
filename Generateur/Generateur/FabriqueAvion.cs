@@ -45,7 +45,7 @@ namespace Generateur
                     return createCiterne(p_name, p_speed, p_maintenanceTime, p_loadingTime, p_unloadingTime);
                     break;
                 case aircraftType.aeronefObservateur:
-                    return createSecours(p_name, p_speed, p_maintenanceTime);
+                    return createObservateur(p_name, p_speed, p_maintenanceTime);
                     break;
                 default:
                     return null;
