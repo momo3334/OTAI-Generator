@@ -10,8 +10,8 @@ namespace Generateur
 {
     public delegate void onAircraftChange();
 
-    [DataContractAttribute()]
-    [KnownType(typeof(List<Aeronef>))]
+    [DataContractAttribute( Namespace = "" )]
+    //[KnownType(typeof(List<Aeronef>))]
     public class Aeroport
     {
         //Données membres

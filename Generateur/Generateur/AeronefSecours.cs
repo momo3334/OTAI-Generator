@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Generateur
 {
-    [DataContractAttribute()]
+    [DataContractAttribute(Namespace = "")]
     class AeronefSecours : Aeronef
     {
         //Constructeur

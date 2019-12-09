@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 namespace Generateur
 {
-    [DataContractAttribute()]
+    [DataContractAttribute(Namespace = "")]
     class AeronefPassager : AeronefTransport
     {
         //Données membres

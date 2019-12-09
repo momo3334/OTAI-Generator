@@ -20,7 +20,7 @@ namespace Generateur
 
         public List<Aeroport> getAirports()
         {
-            return m_scenario.Airports;
+            return m_scenario.Airports.ToList();
         }
 
         public void addAirport(String p_name, String p_position, int p_minPassenger, int p_maxPassenger, int p_minMerchandise, int p_maxMerchandise)

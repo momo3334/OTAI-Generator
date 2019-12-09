@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Scenario xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <AircraftIcon i:nil="true" />
+  <AirportIcon i:nil="true" />
+  <Airports>
+    <Aeroport>
+      <Aircrafts />
+      <MaxMerchandise>4</MaxMerchandise>
+      <MaxPassenger>2</MaxPassenger>
+      <MinMerchandise>3</MinMerchandise>
+      <MinPassenger>1</MinPassenger>
+      <Name>das</Name>
+      <Position>-2° -31' -52" S, -43° -55' -92" E</Position>
+    </Aeroport>
+    <Aeroport>
+      <Aircrafts>
+        <Aeronef xmlns="" i:type="AeronefPassager">
+          <Destination i:nil="true" />
+          <Maintenance>5</Maintenance>
+          <Name>dwa</Name>
+          <Speed>2</Speed>
+          <LoadingTime>3</LoadingTime>
+          <UnloadingTime>4</UnloadingTime>
+          <Capacity>1</Capacity>
+        </Aeronef>
+        <Aeronef xmlns="" i:type="AeronefCargo">
+          <Destination i:nil="true" />
+          <Maintenance>5</Maintenance>
+          <Name>dwa</Name>
+          <Speed>2</Speed>
+          <LoadingTime>3</LoadingTime>
+          <UnloadingTime>4</UnloadingTime>
+          <WeightCapacity>1</WeightCapacity>
+        </Aeronef>
+        <Aeronef xmlns="" i:type="AeronefSecours">
+          <Destination i:nil="true" />
+          <Maintenance>5</Maintenance>
+          <Name>dwa</Name>
+          <Speed>2</Speed>
+        </Aeronef>
+        <Aeronef xmlns="" i:type="AeronefCiterne">
+          <Destination i:nil="true" />
+          <Maintenance>5</Maintenance>
+          <Name>dwa</Name>
+          <Speed>2</Speed>
+          <LargingTime>4</LargingTime>
+          <LoadingTime>3</LoadingTime>
+        </Aeronef>
+        <Aeronef xmlns="" i:type="AeronefObservateur">
+          <Destination i:nil="true" />
+          <Maintenance>5</Maintenance>
+          <Name>dwa</Name>
+          <Speed>2</Speed>
+        </Aeronef>
+      </Aircrafts>
+      <MaxMerchandise>4</MaxMerchandise>
+      <MaxPassenger>2</MaxPassenger>
+      <MinMerchandise>3</MinMerchandise>
+      <MinPassenger>1</MinPassenger>
+      <Name>dascz</Name>
+      <Position>-42° -29' -48" S, 25° 34' 56" W</Position>
+    </Aeroport>
+  </Airports>
+  <MapImage i:nil="true" />
+</Scenario>

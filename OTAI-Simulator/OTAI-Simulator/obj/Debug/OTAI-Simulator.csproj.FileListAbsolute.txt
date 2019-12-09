@@ -1,0 +1,18 @@
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.exe.config
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.exe
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.pdb
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csprojAssemblyReference.cache
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI_Simulator.Properties.Resources.resources
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.GenerateResource.cache
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.CoreCompileInputs.cache
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.exe
+C:\Users\MARCX\source\repos\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.pdb
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.exe.config
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.exe
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.pdb
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csprojAssemblyReference.cache
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI_Simulator.Properties.Resources.resources
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.GenerateResource.cache
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.CoreCompileInputs.cache
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.exe
+E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.pdb

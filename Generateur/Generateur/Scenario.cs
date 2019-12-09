@@ -15,9 +15,8 @@ namespace Generateur
 {
     public delegate void onAirportChange();
 
-    [DataContractAttribute()]
-    [KnownType(typeof(List<Aeroport>))]
-    [KnownType(typeof(Scenario))]
+    [DataContractAttribute(Namespace = "")]
+    //[KnownType(typeof(List<Aeroport>))]
     public class Scenario
     {
         //Données membres
@@ -69,7 +68,7 @@ namespace Generateur
             this.m_aircraftFactory = FabriqueAvion.getInstance();
             this.m_airports = new List<Aeroport>();
 
-
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             this.m_vueGenerateur = new VueGenerateur(this.m_generatorController, this);
@@ -175,7 +174,7 @@ namespace Generateur
             this.m_mapImage = convertImageTobyteArray(getSelectedPath("cmbImageMap"));
 
 
-            DataContractSerializer serializer = new DataContractSerializer(typeof(List<Aeroport>));
+            DataContractSerializer serializer = new DataContractSerializer(typeof(Scenario));
 
             //Permet de specifier que q'une indentation est désiré sur le fichier xml de sortie.
             XmlWriterSettings settings = new XmlWriterSettings { Indent = true };
@@ -195,25 +194,6 @@ namespace Generateur
 
                 File.WriteAllText(@"..\..\data\Scenario.xml", text);
             }
-            this.m_airports = null;
-            deserializeScenario();
-        }
-
-        public void deserializeScenario()
-        {
-            Debug.WriteLine("Deserialisation scenario initialise...");
-            string text;
-
-            text = File.ReadAllText(@"..\..\data\Scenario.xml");
-            using (Stream stream = new MemoryStream())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(text);
-                stream.Write(bytes, 0, bytes.Length);
-                stream.Position = 0;
-                DataContractSerializer serializer = new DataContractSerializer(typeof(List<Aeroport>));
-                this.m_airports = (List<Aeroport>)serializer.ReadObject(stream);
-            }
-            Debug.WriteLine(this.m_airports.ToString());
         }
 
         public byte[] convertImageTobyteArray(String path)

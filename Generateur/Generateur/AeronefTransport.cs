@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 
 namespace Generateur
 {
-    [DataContractAttribute()]
+    [DataContractAttribute(Namespace = "")]
     abstract class AeronefTransport : Aeronef
     {
         //Données membres
