@@ -16,3 +16,13 @@ E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-S
 E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.CoreCompileInputs.cache
 E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.exe
 E:\documents-datadrive\School\Conception OO\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.pdb
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.exe
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.pdb
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csprojAssemblyReference.cache
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI_Simulator.Properties.Resources.resources
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.GenerateResource.cache
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI-Simulator.csproj.CoreCompileInputs.cache
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.exe.config
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.exe
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\bin\Debug\OTAI-Simulator.pdb
+P:\CEGEP\3ieme année\Automne 2019\Conception et Développement Orientés Objets\Travaux pratiques\TP2\OTAI-Generator\OTAI-Simulator\OTAI-Simulator\obj\Debug\OTAI_Simulator.VueSimulateur.resources

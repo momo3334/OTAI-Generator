@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace OTAI_Simulator
 {
     [DataContractAttribute(Namespace = "")]
-    class Scenario
+    public class Scenario
     {
         //Données membres
         byte[] m_mapImage;
@@ -65,10 +65,7 @@ namespace OTAI_Simulator
 
         public void startScenario()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //this.m_vueGenerateur = new VueGenerateur(this.m_generatorController, this);
-            Application.Run(new Form1());
+
         }
     }
 }

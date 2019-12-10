@@ -21,27 +21,9 @@ namespace OTAI_Simulator
         [STAThread]
         static void Main()
         {
-            Scenario scenario = deserializeScenario();
-            scenario.startScenario();
+            ControlleurSimulateur controller = new ControlleurSimulateur();
         }
 
-        public static Scenario deserializeScenario()
-        {
-            Debug.WriteLine("Deserialisation scenario initialise...");
-            string text;
-            Scenario loadedScenario = null;
 
-            text = File.ReadAllText(@"..\..\data\Scenario.xml");
-            using (Stream stream = new MemoryStream())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(text);
-                stream.Write(bytes, 0, bytes.Length);
-                stream.Position = 0;
-                DataContractSerializer serializer = new DataContractSerializer(typeof(Scenario));
-                loadedScenario = (Scenario)serializer.ReadObject(stream);
-            }
-
-            return loadedScenario;
-        }
     }
 }
