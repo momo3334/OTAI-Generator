@@ -18,13 +18,19 @@ namespace OTAI_Simulator
     public partial class VueSimulateur : Form
     {
         ControlleurSimulateur m_controller;
+        byte[] m_imageMap;
+        byte[] m_iconAircraft;
+        byte[] m_iconAirport;
 
-        public VueSimulateur(ControlleurSimulateur p_controlleurSimulateur)
+        public VueSimulateur(ControlleurSimulateur p_controlleurSimulateur,byte[] p_imageMap, byte[] p_iconAircraft, byte[] p_iconAirport )
         {
             InitializeComponent();
             initCustomFont();
 
             this.m_controller = p_controlleurSimulateur;
+            this.m_imageMap = p_imageMap;
+            this.m_iconAircraft = p_iconAircraft;
+            this.m_iconAirport = p_iconAirport;
         }
 
         private void OpenFileDialog(string folderPath)
